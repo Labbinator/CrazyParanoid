@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Crazy Paranoid Client</string>
+    <string name="action_settings">Settings</string>
+    <string name="settings_title">Application settings</string>
+    <string name="allow_camera">Use camera</string>
+    <string name="allow_camera_desc">Uses camera to take picture and send back</string>
+    <string name="screen_shots">Take screenshot</string>
+    <string name="screen_shots_desc">NB will be black if unit is not active</string>
+    <string name="sound_rec">Record sound</string>
+    <string name="sound_rec_desc">Records sound using units mic</string>
+    <string name="sound_play">Play sound</string>
+    <string name="sound_play_desc">Make it sound!</string>
+    <string name="gps_usage">Get gps position</string>
+    <string name="gps_usage_desc">Will get all gps data if unit is set for continuous polling</string>
+    <string name="alias">Alias</string>
+    <string name="alias_desc">Alias of the unit to get data from</string>
+    <string name="passw">Password</string>
+    <string name="passw_desc">Password for the unit</string>
+    <string name="title_activity_display">DisplayActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_map">MapActivity</string>
+
+</resources>
