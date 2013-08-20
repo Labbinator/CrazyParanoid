@@ -221,6 +221,7 @@ containing a value of this type.
     public static final class menu {
         public static final int main=0x7f090000;
         public static final int set_alias_pass=0x7f090001;
+        public static final int sound_player=0x7f090002;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
@@ -231,18 +232,32 @@ containing a value of this type.
         public static final int allow_camera=0x7f060018;
         public static final int allow_camera_desc=0x7f060019;
         public static final int allow_gps_usage=0x7f060020;
-        /** Main activity  
+        /**  Main activity 
          */
         public static final int app_name=0x7f060015;
-        /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
+        /**   Title for notification shown when GooglePlayServices needs to be
+        enabled for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_availability_notification_title=0x7f06000f;
+        public static final int auth_client_needs_enabling_title=0x7f060010;
+        /**   Title for notification shown when GooglePlayServices needs to be
+        installed for a application to work. [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_needs_installation_title=0x7f060011;
+        /**   Title for notification shown when GooglePlayServices needs to be
+        udpated for a application to work. [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_needs_update_title=0x7f060012;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int auth_client_play_services_err_notification_msg=0x7f060010;
+        public static final int auth_client_play_services_err_notification_msg=0x7f060013;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int auth_client_requested_by_msg=0x7f060011;
+        public static final int auth_client_requested_by_msg=0x7f060014;
+        /**   Title for notification shown when a bad version of GooglePlayServices
+        has been installed and needs correction for an application to work.
+        [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_using_bad_version_title=0x7f06000f;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -302,17 +317,7 @@ containing a value of this type.
         public static final int continous_gps_desc=0x7f060022;
         public static final int gps_polling_interval=0x7f060023;
         public static final int gps_polling_interval_desc=0x7f060024;
-        /**  Location client code resources (prefix with location_client) 
-
-        Begin strings for location.reporting
-    
-
-        Some InactiveReason names.  See more in OneUp/package/location/res/values/strings.xml
-    
-         */
-        public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
-        public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
-        public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
+        public static final int mute_button=0x7f060036;
         public static final int recive_notifications=0x7f060025;
         public static final int recive_notifications_desc=0x7f060026;
         public static final int reg_button=0x7f060031;
@@ -324,13 +329,16 @@ containing a value of this type.
         public static final int set_pass=0x7f06002e;
         public static final int set_pass_desc=0x7f06002f;
         public static final int settings_title=0x7f060017;
+        public static final int sound_activity=0x7f060034;
+        public static final int sound_activity_desc=0x7f060035;
         public static final int sound_playback=0x7f06001e;
         public static final int sound_playback_desc=0x7f06001f;
         public static final int sound_rec=0x7f06001c;
         public static final int sound_rec_desc=0x7f06001d;
-        /** Set alias and password activity  
+        /**  Set alias and password activity 
          */
         public static final int title_activity_set_alias_pass=0x7f06002b;
+        public static final int title_activity_sound_player=0x7f060033;
         public static final int unreg_button=0x7f060032;
     }
     public static final class style {
@@ -415,7 +423,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraBearing
+          @attr name se.kronosoft.crazyparanoidserver:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
@@ -429,7 +437,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTargetLat
+          @attr name se.kronosoft.crazyparanoidserver:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
@@ -443,7 +451,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTargetLng
+          @attr name se.kronosoft.crazyparanoidserver:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
@@ -457,7 +465,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTilt
+          @attr name se.kronosoft.crazyparanoidserver:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
@@ -471,7 +479,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraZoom
+          @attr name se.kronosoft.crazyparanoidserver:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
@@ -491,7 +499,7 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name android:mapType
+          @attr name se.kronosoft.crazyparanoidserver:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
@@ -505,7 +513,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiCompass
+          @attr name se.kronosoft.crazyparanoidserver:uiCompass
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
@@ -519,7 +527,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiRotateGestures
+          @attr name se.kronosoft.crazyparanoidserver:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
@@ -533,7 +541,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiScrollGestures
+          @attr name se.kronosoft.crazyparanoidserver:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
@@ -547,7 +555,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiTiltGestures
+          @attr name se.kronosoft.crazyparanoidserver:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
@@ -561,7 +569,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiZoomControls
+          @attr name se.kronosoft.crazyparanoidserver:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
@@ -575,7 +583,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiZoomGestures
+          @attr name se.kronosoft.crazyparanoidserver:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
@@ -589,7 +597,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:useViewLifecycle
+          @attr name se.kronosoft.crazyparanoidserver:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
@@ -603,7 +611,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:zOrderOnTop
+          @attr name se.kronosoft.crazyparanoidserver:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };

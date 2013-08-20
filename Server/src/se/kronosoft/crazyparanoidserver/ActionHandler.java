@@ -1,7 +1,10 @@
 package se.kronosoft.crazyparanoidserver;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.AlarmClock;
+import android.text.format.Time;
 import android.util.Log;
 
 public class ActionHandler {
@@ -93,6 +96,33 @@ public class ActionHandler {
 	private void playSoundAction() {
 		//Check if setting is to allow the specified action
 		if(prefs.getBoolean(MainActivity.PREFS_PLAYSOUND, false)){
+			
+			Time t = new Time();
+			t.setToNow();
+			
+			Integer hour = Integer.parseInt(t.format("%H"));
+			Integer minute = Integer.parseInt(t.format("%M"));
+			
+			if(minute == 59){
+				minute = 0;
+				hour++;
+			}else{
+				minute++;
+			}
+			
+			if(hour == 24){
+				hour = 0;
+			}
+			
+		    Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+		    i.putExtra(AlarmClock.EXTRA_HOUR, hour);
+		    i.putExtra(AlarmClock.EXTRA_MINUTES, minute);
+		    i.putExtra(AlarmClock.EXTRA_MESSAGE, "Crazy Paranoid Alarm");
+		    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		    ctx.startActivity(i);
+		    
+		    //TODO! Make the system respond that an alarm is set.
+		    
 			
 		}else{
 			new SendGcmPost("Denial bad request type", "0", regid, ctx).execute(null, null, null);

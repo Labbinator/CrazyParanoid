@@ -1,22 +1,67 @@
 package se.kronosoft.crazyparanoidserver;
 
+import java.io.IOException;
+
+import com.google.android.gms.internal.fi;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
+import android.util.Log;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.widget.Toast;
 
 public class PhotoGrabber {
 
 	private Camera camera = null;
 	private Context ctx;
-	private int cameraId = 0;
+	SurfaceHolder surfaceHolder = null;
+	
 
 	public PhotoGrabber(Context ctx) {
 		this.ctx = ctx;
 	}
 
 	public void grab() {
+		
+		int numOfCameras = Camera.getNumberOfCameras();
+		
+		if(numOfCameras == 0){
+			//unit has no cameras!!
+			//Notify
+			return;
+		}
+		
+		while(numOfCameras-- > 0){
+			
+			camera = Camera.open(numOfCameras);	
+			//TODO! Get params and set params
+			
+			SurfaceView dummy=new SurfaceView(ctx);
+			
+			try{
+				
+				//TODO! Check http://stackoverflow.com/questions/10775942/android-sdk-get-raw-preview-camera-image-without-displaying-it/10776349#10776349
+				//To se if its possible
+				camera.setPreviewDisplay(dummy.getHolder());    
+				camera.startPreview();
+				camera.takePicture(null, null, new PhotoHandler(ctx));
+			}catch(IOException e){
+				
+			}catch (RuntimeException e) {
+				Log.e("Take pic failed", e.getLocalizedMessage());
+			}
+			finally{
+				camera.release();
+			}
+		}
+	}
+		
+		
+		
+		/*
 		if (!ctx.getPackageManager().hasSystemFeature(
 				PackageManager.FEATURE_CAMERA)) {
 			Toast.makeText(ctx, "No camera on this device", Toast.LENGTH_LONG)
@@ -49,6 +94,6 @@ public class PhotoGrabber {
 			}
 		}
 		return cameraId;
-	}
+	}*/
 
 }

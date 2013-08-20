@@ -1,7 +1,5 @@
 package se.kronosoft.crazyparanoidserver;
 
-import java.util.Locale;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
@@ -9,7 +7,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.format.Time;
-import android.widget.Toast;
 
 public class PossitionReciver {
 

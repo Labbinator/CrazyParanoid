@@ -217,15 +217,29 @@ containing a value of this type.
         public static final int allow_camera=0x7f060018;
         public static final int allow_camera_desc=0x7f060019;
         public static final int app_name=0x7f060015;
-        /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
+        /**   Title for notification shown when GooglePlayServices needs to be
+        enabled for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_availability_notification_title=0x7f06000f;
+        public static final int auth_client_needs_enabling_title=0x7f060010;
+        /**   Title for notification shown when GooglePlayServices needs to be
+        installed for a application to work. [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_needs_installation_title=0x7f060011;
+        /**   Title for notification shown when GooglePlayServices needs to be
+        udpated for a application to work. [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_needs_update_title=0x7f060012;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int auth_client_play_services_err_notification_msg=0x7f060010;
+        public static final int auth_client_play_services_err_notification_msg=0x7f060013;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int auth_client_requested_by_msg=0x7f060011;
+        public static final int auth_client_requested_by_msg=0x7f060014;
+        /**   Title for notification shown when a bad version of GooglePlayServices
+        has been installed and needs correction for an application to work.
+        [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_using_bad_version_title=0x7f06000f;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -284,17 +298,6 @@ containing a value of this type.
         public static final int gps_usage=0x7f060020;
         public static final int gps_usage_desc=0x7f060021;
         public static final int hello_world=0x7f060027;
-        /**  Location client code resources (prefix with location_client) 
-
-        Begin strings for location.reporting
-    
-
-        Some InactiveReason names.  See more in OneUp/package/location/res/values/strings.xml
-    
-         */
-        public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
-        public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
-        public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
         public static final int passw=0x7f060024;
         public static final int passw_desc=0x7f060025;
         public static final int screen_shots=0x7f06001a;
@@ -389,7 +392,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraBearing
+          @attr name se.kronosoft.crazyparanoidclient:cameraBearing
         */
         public static final int MapAttrs_cameraBearing = 1;
         /**
@@ -403,7 +406,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTargetLat
+          @attr name se.kronosoft.crazyparanoidclient:cameraTargetLat
         */
         public static final int MapAttrs_cameraTargetLat = 2;
         /**
@@ -417,7 +420,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTargetLng
+          @attr name se.kronosoft.crazyparanoidclient:cameraTargetLng
         */
         public static final int MapAttrs_cameraTargetLng = 3;
         /**
@@ -431,7 +434,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraTilt
+          @attr name se.kronosoft.crazyparanoidclient:cameraTilt
         */
         public static final int MapAttrs_cameraTilt = 4;
         /**
@@ -445,7 +448,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:cameraZoom
+          @attr name se.kronosoft.crazyparanoidclient:cameraZoom
         */
         public static final int MapAttrs_cameraZoom = 5;
         /**
@@ -465,7 +468,7 @@ containing a value of this type.
 <tr><td><code>terrain</code></td><td>3</td><td></td></tr>
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
-          @attr name android:mapType
+          @attr name se.kronosoft.crazyparanoidclient:mapType
         */
         public static final int MapAttrs_mapType = 0;
         /**
@@ -479,7 +482,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiCompass
+          @attr name se.kronosoft.crazyparanoidclient:uiCompass
         */
         public static final int MapAttrs_uiCompass = 6;
         /**
@@ -493,7 +496,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiRotateGestures
+          @attr name se.kronosoft.crazyparanoidclient:uiRotateGestures
         */
         public static final int MapAttrs_uiRotateGestures = 7;
         /**
@@ -507,7 +510,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiScrollGestures
+          @attr name se.kronosoft.crazyparanoidclient:uiScrollGestures
         */
         public static final int MapAttrs_uiScrollGestures = 8;
         /**
@@ -521,7 +524,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiTiltGestures
+          @attr name se.kronosoft.crazyparanoidclient:uiTiltGestures
         */
         public static final int MapAttrs_uiTiltGestures = 9;
         /**
@@ -535,7 +538,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiZoomControls
+          @attr name se.kronosoft.crazyparanoidclient:uiZoomControls
         */
         public static final int MapAttrs_uiZoomControls = 10;
         /**
@@ -549,7 +552,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:uiZoomGestures
+          @attr name se.kronosoft.crazyparanoidclient:uiZoomGestures
         */
         public static final int MapAttrs_uiZoomGestures = 11;
         /**
@@ -563,7 +566,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:useViewLifecycle
+          @attr name se.kronosoft.crazyparanoidclient:useViewLifecycle
         */
         public static final int MapAttrs_useViewLifecycle = 12;
         /**
@@ -577,7 +580,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name android:zOrderOnTop
+          @attr name se.kronosoft.crazyparanoidclient:zOrderOnTop
         */
         public static final int MapAttrs_zOrderOnTop = 13;
     };
