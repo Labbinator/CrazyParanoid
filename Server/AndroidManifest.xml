@@ -67,11 +67,16 @@
                 android:value="se.kronosoft.crazyparanoidserver.MainActivity" />
         </activity>
 
-        <receiver android:name="com.example.MyBroadcastReceiver" >
+        <receiver android:name="se.kronosoft.crazyparanoidserver.PowerOnBroadcastReciver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".GpsPollingService"
+            android:label="Crazy Paranoid gps poll service" >
+        </service>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 
 public class PossitionReciver {
 
@@ -28,7 +29,7 @@ public class PossitionReciver {
 	LocationListener locationListener = new LocationListener() {
 		// TODO! Check locale problems
 		@SuppressLint("DefaultLocale")
-		// For now. Should check that it doesent couse problems
+		// For now. Should check that it doesn't cause problems
 		public void onLocationChanged(Location location) {
 			// Called when a new location is found by the network location
 			// provider. makeUseOfNewLocation(location);
@@ -42,10 +43,25 @@ public class PossitionReciver {
 			String lat = String.format("%f", location.getLatitude());
 			String lon = String.format("%f", location.getLongitude());
 
-			new SendGcmPost("gps_pos",
-					acc + ";" + time + ";" + lat + ";" + lon, regid, ctx)
-					.execute(null, null, null);
-
+			
+			if(regid.equals("0")){
+				//Save to database!
+				
+				Log.e("onLocationChanged", "regid == 0");
+				
+				DBHelperTool db = new DBHelperTool(ctx);
+				
+				db.insertGpsPos(acc + ";" + time + ";" + lat + ";" + lon, time);
+				
+				Log.e("onLocationChanged", acc + ";" + time + ";" + lat + ";" + lon);
+				
+				
+			}else{
+				new SendGcmPost("gps_pos",
+						acc + ";" + time + ";" + lat + ";" + lon, regid, ctx)
+						.execute(null, null, null);
+			}
+			
 			locationManager.removeUpdates(locationListener);
 		}
 

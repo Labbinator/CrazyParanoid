@@ -8,10 +8,8 @@ public class PowerOnBroadcastReciver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		// TODO start gps polling service
 		
         Intent startServiceIntent = new Intent(context, GpsPollingService.class);
         context.startService(startServiceIntent);
 	}
-
 }

@@ -3,6 +3,7 @@ package se.kronosoft.crazyparanoidserver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.provider.AlarmClock;
 import android.text.format.Time;
 import android.util.Log;
@@ -76,9 +77,31 @@ public class ActionHandler {
 	private void getPosAction() {
 		//Check if setting is to allow the specified action
 		if(prefs.getBoolean(MainActivity.PREFS_GPSUSAGE, false)){
-			
-			new PossitionReciver(ctx, regid);
-			
+			if(prefs.getBoolean(MainActivity.PREFS_CONT_GPS, false)){
+				Cursor result = new DBHelperTool(ctx).getGpsPos();
+				
+				if(result.moveToFirst()){
+					
+					String data = result.getString(2);
+					
+					while(result.moveToNext()){
+						String toAdd = result.getString(2);
+						if(data.length() + toAdd.length() < 1500){
+							//Making sure that data isnt to long. Post limit 2k
+							data = data + ";" + toAdd;
+						}else{
+							break;
+						}
+					}
+					
+					new SendGcmPost("gps_pos", data, regid, ctx).execute(null, null, null);
+				}else {
+					//Database empty?
+					new PossitionReciver(ctx, regid);
+				}
+			}else{				
+				new PossitionReciver(ctx, regid);
+			}
 		}else{
 			new SendGcmPost("Denial bad request type", "0", regid, ctx).execute(null, null, null);
 		}	

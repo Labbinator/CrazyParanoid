@@ -2,8 +2,6 @@ package se.kronosoft.crazyparanoidserver;
 
 import java.io.IOException;
 
-import com.google.android.gms.internal.fi;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;

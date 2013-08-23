@@ -1,16 +1,19 @@
 package se.kronosoft.crazyparanoidserver;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBHelperTool extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "CrazyParanoid";
 	private static final String GPS_TABLE = "GpsPossitions";
-	private static final String LOGS_TABLE = "LogsTable";
 
 	public DBHelperTool(Context context) {
 		super(context, DATABASE_NAME, null, 1);
@@ -19,27 +22,49 @@ public class DBHelperTool extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase dataB) {
 
-		// dataB.execSQL("create table " + TABLE_NAME +
-		// "(_id integer primary key autoincrement, title text, rating integer, descr text);");
+		dataB.execSQL("create table " + GPS_TABLE +
+		"(_id integer primary key autoincrement, time text, pos text);");
+		
+		
+		
+		ContentValues cv = new ContentValues();
+		cv.put("time", "1" );
+		cv.put("pos", "10.0;CA nu;37,422006;-122,084095");
+		dataB.insert(GPS_TABLE, null, cv);
+		
+		ContentValues cv2 = new ContentValues();
+		cv2.put("time", "2");
+		cv2.put("pos", "10.0;CA nu;37,422056;-122,084095");
+		dataB.insert(GPS_TABLE, null, cv2);
+		
+		ContentValues cv3 = new ContentValues();
+		cv3.put("time", "3");
+		cv3.put("pos", "10.0;CA nu;37,422106;-122,084095");
+		dataB.insert(GPS_TABLE, null, cv3);
+		
 
-		// ContentValues cv = new ContentValues();
 	}
 
 	public void onUpgrade(SQLiteDatabase dataB, int oldV, int newV) {
 	}
 
-	public void insertGpsPos(String pos) {
-
+	public void insertGpsPos(String pos, String time) {
+		ContentValues cv = new ContentValues();
+		
+		Log.e("insertGpsPos", pos);
+		
+		cv.put("time", time);
+		cv.put("pos", pos);
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.insert(GPS_TABLE, null, cv);
+		db.close();
+		
 	}
 	
-	public /*HASHMAP?*/ void getGpsPos(){
-		
-	}
-
-	public void insertLog(String logString){
-		
-	}
-	public /*HASHMAP?*/ void getLogs(){
-		
+	public Cursor getGpsPos(){		
+		Cursor result = getReadableDatabase().rawQuery(
+				"SELECT * FROM " + GPS_TABLE + " ORDER BY time", null);
+	
+		return result;
 	}
 }
