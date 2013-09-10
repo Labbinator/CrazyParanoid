@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -32,11 +31,9 @@ public class GcmBroadcastReciver extends BroadcastReceiver {
 		String messageType = gcm.getMessageType(intent);
 		if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
 			handleMessage(intent);
-		} else {
+		} /*else {
 			// This should not happen...
-			// sendNotification("GCM message error: " +
-			// intent.getExtras().toString());
-		}
+		}*/
 		setResultCode(Activity.RESULT_OK);
 	}
 
@@ -48,13 +45,12 @@ public class GcmBroadcastReciver extends BroadcastReceiver {
 		String data = intent.getStringExtra("data");
 		
 		if(alias == null || response == null || data == null){
-			//Bad message, quitting
-			Log.e("handleMessage","Null message recived");
+			//Bad message, ignoring
+			//Log.e("handleMessage","Null message recived");
 			return;
 		}
-		//TODO! For debug reasons
+		//Todo!! For debug reasons
 		sendNotification("From: " + alias + "Response: " + response + "Data: " + data);
-		
 		new ActionHandler(alias, response, data, ctx).run();
 	}
 

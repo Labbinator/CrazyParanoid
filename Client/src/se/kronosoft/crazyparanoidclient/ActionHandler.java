@@ -1,11 +1,7 @@
 package se.kronosoft.crazyparanoidclient;
 
-import java.util.StringTokenizer;
-
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.util.Log;
 
 public class ActionHandler {
 	
@@ -39,52 +35,30 @@ public class ActionHandler {
 	}
 
 	private void playSoundAction() {
-		// TODO Just make a notification or toast that sound has been played
-		
+		// TODO Just make a notification that sound will be played
 	}
 
 	private void recSoundAction() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	private void gpsPosAction() {
-		/*
-		StringTokenizer sToken = new StringTokenizer(data, ";");
 		
-		String accuracy = sToken.nextToken();
-		String latitude = sToken.nextToken();
-		String longitude = sToken.nextToken();
-		
-		Log.e("accu", accuracy);
-		Log.e("lat", latitude);
-		Log.e("lon", longitude);
-		
-		latitude = latitude.replace(',', '.');
-		longitude = longitude.replace(',', '.');
-		
-		String uri = "geo:"+ latitude + "," + longitude + "?22";*/
-		
-		//Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-		//i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		//ctx.startActivity(i);
+		//TODO! For future, save data in notification so map appears when user presses notification?
 		
 		Intent intent = new Intent(ctx, MapActivity.class);
 		intent.putExtra("data", data);
 		intent.putExtra("alias", alias);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		ctx.startActivity(intent);
-		
 	}
 
 	private void screenShotAction() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	private void cameraAction() {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

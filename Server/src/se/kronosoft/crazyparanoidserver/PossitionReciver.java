@@ -2,6 +2,7 @@ package se.kronosoft.crazyparanoidserver;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,12 +19,46 @@ public class PossitionReciver {
 	public PossitionReciver(Context ctx, String regid) {
 		this.ctx = ctx;
 		this.regid = regid;
-
+		
 		locationManager = (LocationManager) ctx
 				.getSystemService(Context.LOCATION_SERVICE);
 
-		locationManager.requestLocationUpdates(
-				LocationManager.NETWORK_PROVIDER, 1, 0, locationListener);
+		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){			
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+		}else {
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);			
+		}
+
+		
+		/*Criteria criteria = new Criteria();
+
+	    criteria.setAccuracy(Criteria.ACCURACY_FINE);
+	    /*criteria.setSpeedRequired(false);
+	    criteria.setAltitudeRequired(false);
+	    criteria.setBearingRequired(false);
+	    criteria.setCostAllowed(true);
+	    criteria.setPowerRequirement(Criteria.POWER_HIGH);	
+		
+
+		
+		String best = locationManager.getBestProvider(criteria, false);
+		
+		Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+		
+		if(location != null){
+			Log.e("Location" , location.toString());
+		} */
+		
+		//locationManager.requestLocationUpdates(best, 0, 0, locationListener);
+		
+		/*
+		Log.e("PossitionReciver constr", "done");
+		Log.e("Crit", criteria.toString());
+		Log.e("Provicer", best);
+		
+		Log.e("LocationManager.NETWORK_PROVIDER", LocationManager.NETWORK_PROVIDER);
+		Log.e("LocationManager.GPS_PROVIDER", LocationManager.GPS_PROVIDER);*/
+		
 	}
 
 	LocationListener locationListener = new LocationListener() {
@@ -42,18 +77,18 @@ public class PossitionReciver {
 			String time = now.format2445();
 			String lat = String.format("%f", location.getLatitude());
 			String lon = String.format("%f", location.getLongitude());
-
 			
+			Log.e("onLocationChanged", acc + ";" + time + ";" + lat + ";" + lon);
+			Log.e("onLocationChanged", "Provider " + location.getProvider());
+
 			if(regid.equals("0")){
 				//Save to database!
 				
-				Log.e("onLocationChanged", "regid == 0");
+				//Log.e("onLocationChanged", "regid == 0");
 				
 				DBHelperTool db = new DBHelperTool(ctx);
 				
 				db.insertGpsPos(acc + ";" + time + ";" + lat + ";" + lon, time);
-				
-				Log.e("onLocationChanged", acc + ";" + time + ";" + lat + ";" + lon);
 				
 				
 			}else{
@@ -67,12 +102,15 @@ public class PossitionReciver {
 
 		@Override
 		public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+			Log.e("onStatusChanged", "Running");
 		}
 
 		public void onProviderEnabled(String provider) {
+			Log.e("onProviderEnabled", "Running");
 		}
 
 		public void onProviderDisabled(String provider) {
+			Log.e("onProviderDisabled", "Running");
 		}
 	};
 }

@@ -17,7 +17,7 @@ import android.util.Log;
 
 public class SendGcmPost extends AsyncTask<Void, Void, String> {
 
-	private static final String SERVER_URL = "http://labe.ath.cx:6677/cp_gcm/sendthru.php";
+	private static final String SERVER_URL = "http://kronosoft.se/cp_gcm/sendthru.php";
 	private String reqType;
 	private Context ctx;
 

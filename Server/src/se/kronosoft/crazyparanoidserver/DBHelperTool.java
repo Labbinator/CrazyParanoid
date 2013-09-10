@@ -1,8 +1,5 @@
 package se.kronosoft.crazyparanoidserver;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -24,25 +21,6 @@ public class DBHelperTool extends SQLiteOpenHelper {
 
 		dataB.execSQL("create table " + GPS_TABLE +
 		"(_id integer primary key autoincrement, time text, pos text);");
-		
-		
-		
-		ContentValues cv = new ContentValues();
-		cv.put("time", "1" );
-		cv.put("pos", "10.0;CA nu;37,422006;-122,084095");
-		dataB.insert(GPS_TABLE, null, cv);
-		
-		ContentValues cv2 = new ContentValues();
-		cv2.put("time", "2");
-		cv2.put("pos", "10.0;CA nu;37,422056;-122,084095");
-		dataB.insert(GPS_TABLE, null, cv2);
-		
-		ContentValues cv3 = new ContentValues();
-		cv3.put("time", "3");
-		cv3.put("pos", "10.0;CA nu;37,422106;-122,084095");
-		dataB.insert(GPS_TABLE, null, cv3);
-		
-
 	}
 
 	public void onUpgrade(SQLiteDatabase dataB, int oldV, int newV) {

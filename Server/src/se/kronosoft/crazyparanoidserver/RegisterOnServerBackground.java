@@ -19,7 +19,7 @@ public class RegisterOnServerBackground extends AsyncTask<Void, Void, String> {
 
 	Context ctx;
 	SharedPreferences prefs;
-	private static final String SERVER_URL = "http://labe.ath.cx:6677/cp_gcm/register.php"; 
+	private static final String SERVER_URL = "http://kronosoft.se/cp_gcm/register.php"; 
 
 	public RegisterOnServerBackground(Context context) {
 		ctx = context;

@@ -29,8 +29,7 @@ public class ActionHandler {
 		
 		if(!passw.equals(prefs.getString(MainActivity.PREFS_PASSW, "")) && passw.length() != 0){
 			//Attempt with wrong pass!		
-			new SendGcmPost("Denial password", "0", regid, ctx).execute(null, null, null);
-			
+			new SendGcmPost("Denial password", "0", regid, ctx).execute(null, null, null);		
 			return;
 		}
 		
@@ -57,9 +56,8 @@ public class ActionHandler {
 	private void cameraAction() {
 		//Check if setting is to allow the specified action
 		if(prefs.getBoolean(MainActivity.PREFS_CAMERA, false)){
-			
-			new PhotoGrabber(ctx).grab();
-			
+			new SendGcmPost("Denial unimplemented", "0", regid, ctx).execute(null, null, null);
+			//new PhotoGrabber(ctx).grab();
 		}else{
 			new SendGcmPost("Denial bad request type", "0", regid, ctx).execute(null, null, null);
 		}
@@ -68,7 +66,7 @@ public class ActionHandler {
 	private void screenShotAction() {
 		//Check if setting is to allow the specified action
 		if(prefs.getBoolean(MainActivity.PREFS_SCREENSHOTS, false)){
-			
+			new SendGcmPost("Denial unimplemented", "0", regid, ctx).execute(null, null, null);
 		}else{
 			new SendGcmPost("Denial bad request type", "0", regid, ctx).execute(null, null, null);
 		}	
@@ -96,7 +94,7 @@ public class ActionHandler {
 					
 					new SendGcmPost("gps_pos", data, regid, ctx).execute(null, null, null);
 				}else {
-					//Database empty?
+					//Database empty!
 					new PossitionReciver(ctx, regid);
 				}
 			}else{				
@@ -110,7 +108,7 @@ public class ActionHandler {
 	private void recSoundAction() {
 		//Check if setting is to allow the specified action
 		if(prefs.getBoolean(MainActivity.PREFS_REGID, false)){
-			
+			new SendGcmPost("Denial unimplemented", "0", regid, ctx).execute(null, null, null);
 		}else{
 			new SendGcmPost("Denial bad request type", "0", regid, ctx).execute(null, null, null);
 		}
@@ -144,9 +142,7 @@ public class ActionHandler {
 		    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		    ctx.startActivity(i);
 		    
-		    //TODO! Make the system respond that an alarm is set.
-		    
-			
+		    new SendGcmPost("Alarm set to "  + hour.toString() + ":" + minute.toString(), "0", regid, ctx).execute(null, null, null);
 		}else{
 			new SendGcmPost("Denial bad request type", "0", regid, ctx).execute(null, null, null);
 		}

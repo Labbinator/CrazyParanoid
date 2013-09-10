@@ -3,13 +3,10 @@ package se.kronosoft.crazyparanoidserver;
 import java.io.IOException;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
 public class PhotoGrabber {
 
