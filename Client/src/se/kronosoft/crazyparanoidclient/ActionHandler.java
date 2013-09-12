@@ -39,7 +39,7 @@ public class ActionHandler {
 	}
 
 	private void recSoundAction() {
-		// TODO Auto-generated method stub
+		// TODO Implement!
 	}
 
 	private void gpsPosAction() {
@@ -54,11 +54,11 @@ public class ActionHandler {
 	}
 
 	private void screenShotAction() {
-		// TODO Auto-generated method stub
+		// TODO Implement!
 	}
 
 	private void cameraAction() {
-		// TODO Auto-generated method stub
+		// TODO Implement!
 	}
 
 }

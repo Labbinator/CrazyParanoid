@@ -193,7 +193,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				gpsPoll.setChecked(true);
 			}
 			saveSettings();
-			startStopAlarmManager();
+			startGpsPollingService();
 			break;
 		case R.id.notifications_row:
 			if (notifications.isChecked()) {
@@ -208,7 +208,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	private void startStopAlarmManager() {
+	private void startGpsPollingService() {
         Intent startServiceIntent = new Intent(this, GpsPollingService.class);
         startService(startServiceIntent);
 	}

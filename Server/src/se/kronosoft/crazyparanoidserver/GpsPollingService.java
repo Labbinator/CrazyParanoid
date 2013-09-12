@@ -18,6 +18,8 @@ public class GpsPollingService extends Service {
 		
 		Log.e("GpsPollingService: onStart", "Starting!");
 		
+		//TODO!! Check so that service doesnt spam database when restarted 
+		
 		// Check prefs!
 		SharedPreferences prefs;
 		prefs = getSharedPreferences(MainActivity.class.getSimpleName(),

@@ -2,13 +2,13 @@ package se.kronosoft.crazyparanoidserver;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.Toast;
 
 public class PossitionReciver {
 
@@ -25,8 +25,10 @@ public class PossitionReciver {
 
 		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){			
 			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+			Log.e("PossitionReciver constr", "GPS is enabled");
 		}else {
-			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);			
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+			Log.e("PossitionReciver constr", "GPS is disabled");
 		}
 
 		
@@ -51,9 +53,7 @@ public class PossitionReciver {
 		
 		//locationManager.requestLocationUpdates(best, 0, 0, locationListener);
 		
-		/*
-		Log.e("PossitionReciver constr", "done");
-		Log.e("Crit", criteria.toString());
+		/*Log.e("Crit", criteria.toString());
 		Log.e("Provicer", best);
 		
 		Log.e("LocationManager.NETWORK_PROVIDER", LocationManager.NETWORK_PROVIDER);
@@ -79,8 +79,9 @@ public class PossitionReciver {
 			String lon = String.format("%f", location.getLongitude());
 			
 			Log.e("onLocationChanged", acc + ";" + time + ";" + lat + ";" + lon);
+			
 			Log.e("onLocationChanged", "Provider " + location.getProvider());
-
+						
 			if(regid.equals("0")){
 				//Save to database!
 				

@@ -21,7 +21,6 @@ public class ActionHandler {
 		this.passw = passw;
 		this.regid = regid;
 		ctx = context;
-		
 		prefs = ctx.getSharedPreferences(MainActivity.class.getSimpleName(), Context.MODE_PRIVATE);
 	}
 

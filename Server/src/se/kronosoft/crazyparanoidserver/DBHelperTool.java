@@ -41,7 +41,7 @@ public class DBHelperTool extends SQLiteOpenHelper {
 	
 	public Cursor getGpsPos(){		
 		Cursor result = getReadableDatabase().rawQuery(
-				"SELECT * FROM " + GPS_TABLE + " ORDER BY time", null);
+				"SELECT * FROM " + GPS_TABLE + " ORDER BY time DESC", null);
 	
 		return result;
 	}
